@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M-BAJA ATV Team | College Name</title>
-    <meta name="description" content="Official website of the M-BAJA ATV Team from [College Name]. Engineering excellence in motion.">
-    
+    <meta name="description"
+        content="Official website of the M-BAJA ATV Team from [College Name]. Engineering excellence in motion.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
     <style>
         /* =========================================
            1. CSS Variables & Theme Setup
            ========================================= */
         :root {
-            /* Core Colors - Replace these with your College Colors */
-            --primary-color: #e63946;    /* Example: Red */
-            --secondary-color: #1d3557;  /* Example: Dark Blue */
-            --accent-color: #f1faee;     /* Example: Off-white */
-            
+            /* Core Colors - Vibrant & Modern */
+            --primary-color: #ff3b3f;
+            /* Intense Red */
+            --primary-gradient: linear-gradient(135deg, #ff3b3f 0%, #d00000 100%);
+            --secondary-color: #101010;
+            /* Deep Black/Grey */
+            --accent-color: #00d4ff;
+            /* Cyan Accent */
+
             /* Text Colors */
-            --text-main: #333333;
-            --text-light: #666666;
+            --text-main: #222222;
+            --text-light: #555555;
             --text-white: #ffffff;
 
             /* Backgrounds */
-            --bg-body: #f8f9fa;
-            --bg-card: #ffffff;
-            --bg-nav: rgba(255, 255, 255, 0.95);
+            --bg-body: #f4f7f6;
+            --bg-glass: rgba(255, 255, 255, 0.7);
+            --bg-glass-border: rgba(255, 255, 255, 0.4);
+            --bg-nav: rgba(255, 255, 255, 0.85);
+
+            /* Glassmorphism */
+            --glass-blur: blur(12px);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 
             /* Shadows & Effects */
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
             --transition-speed: 0.3s;
-            --border-radius: 8px;
+            --border-radius: 16px;
+
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
         }
 
         /* Dark Mode Override */
         [data-theme="dark"] {
-            --primary-color: #ff5a5f;
-            --secondary-color: #a8dadc;
-            
-            --text-main: #f1f1f1;
-            --text-light: #aaaaaa;
-            --text-white: #ffffff;
+            --primary-color: #ff5256;
+            --primary-gradient: linear-gradient(135deg, #ff5256 0%, #b30000 100%);
+            --text-main: #f0f0f0;
+            --text-light: #b0b0b0;
+            --bg-body: #0a0a0a;
 
-            --bg-body: #121212;
-            --bg-card: #1e1e1e;
-            --bg-nav: rgba(18, 18, 18, 0.95);
+            /* Dark Glass */
+            --bg-glass: rgba(30, 30, 30, 0.6);
+            --bg-glass-border: rgba(255, 255, 255, 0.1);
+            --bg-nav: rgba(10, 10, 10, 0.85);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.5);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.5);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         /* =========================================
@@ -66,12 +87,39 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Setup fallback fonts */
+            font-family: var(--font-body);
             background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
+            transition: background-color 0.5s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .btn {
+            font-family: var(--font-heading);
         }
 
         img {
@@ -97,54 +145,86 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             text-align: center;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -1px;
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary-color);
-            margin: 10px auto 0;
-            border-radius: 2px;
+            z-index: 10;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-light);
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.1rem;
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* SVG Dividers */
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            z-index: 2;
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(150% + 1.3px);
+            height: 100px;
+        }
+
+        .wave-divider .shape-fill {
+            fill: var(--bg-body);
+            transition: fill 0.5s ease;
         }
 
         /* =========================================
-           3. Components (Nav, Buttons, Cards)
+           3. Glassmorphism Design System
            ========================================= */
-        
+        .glass-card {
+            background: var(--bg-glass);
+            box-shadow: var(--glass-shadow);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--bg-glass-border);
+            border-radius: var(--border-radius);
+            transition: all var(--transition-speed) ease;
+        }
+
+        /* =========================================
+           4. Components (Nav, Buttons)
+           ========================================= */
+
         /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
             background: var(--bg-nav);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--bg-glass-border);
             padding: 1rem 0;
-            transition: background-color var(--transition-speed);
+            transition: all 0.3s ease;
         }
 
         .nav-content {
@@ -154,23 +234,39 @@
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
+            font-weight: 800;
+            font-size: 1.8rem;
             color: var(--primary-color);
+            letter-spacing: -1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            font-weight: 500;
-            transition: color 0.2s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-color);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .theme-toggle {
@@ -178,52 +274,59 @@
             background: none;
             border: none;
             color: var(--text-main);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             padding: 0.5rem;
             transition: transform 0.3s;
         }
 
         .theme-toggle:hover {
-            transform: rotate(20deg);
+            transform: rotate(20deg) scale(1.1);
         }
 
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 16px 40px;
             border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            border: 2px solid transparent;
+            border: none;
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
+            background: var(--primary-gradient);
             color: white;
-            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 59, 63, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: transparent;
-            border-color: var(--primary-color);
+            background: var(--bg-body);
             color: var(--primary-color);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 59, 63, 0.4);
+            outline: 2px solid var(--primary-color);
         }
 
         .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--text-white);
-            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
         }
 
         .btn-secondary:hover {
-            background-color: var(--text-white);
+            background: white;
             color: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         /* =========================================
-           4. Sections
+           5. Sections
            ========================================= */
 
         /* Hero */
@@ -233,124 +336,171 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Placeholder for Hero Image - linear gradient overlay included */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://placehold.co/1920x1080/2c2c2c/FFF?text=ATV+Hero+Action+Shot'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            /* Placeholder Background */
             color: var(--text-white);
-            padding-top: 60px; /* Offset for fixed nav */
+            padding-top: 60px;
+        }
+
+        /* Animated Background & Overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placehold.co/1920x1080/1a1a1a/FFF?text=ATV+Cinema+Shot') no-repeat center center/cover;
+            animation: kenBurns 20s infinite alternate linear;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: -1;
+        }
+
+        @keyframes kenBurns {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            animation: fadeInDown 1s ease-out;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s ease-out;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
+            color: rgba(255, 255, 255, 0.9);
+            animation: slideUp 0.8s ease-out 0.2s backwards;
         }
 
         .hero .cta-group {
-            animation: fadeInUp 1s ease-out 0.6s backwards;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
+            animation: slideUp 0.8s ease-out 0.4s backwards;
         }
 
         /* Overview */
         .overview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .info-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
+            padding: 3rem 2rem;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .info-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-hover);
         }
 
         .info-card h3 {
-            color: var(--secondary-color);
+            font-size: 1.5rem;
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
 
         /* Team */
-        .subteam-group {
-            margin-bottom: 4rem;
+        .subteam-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .subteam-title {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--primary-color);
-            padding-left: 1rem;
+        .subteam-title::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
         }
 
         .member-card {
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s;
             position: relative;
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
         }
 
         .member-photo {
             width: 100%;
-            height: 250px;
+            height: 280px;
             background-color: #ddd;
-            /* Placeholder Image */
-            background-image: url('https://placehold.co/400x500/cccccc/666666?text=Member+Photo');
+            background-image: url('https://placehold.co/400x500/cccccc/666666?text=Profile');
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s;
+        }
+
+        .member-card:hover .member-photo {
+            transform: scale(1.05);
         }
 
         .member-info {
             padding: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .member-name {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.25rem;
         }
 
         .member-role {
             font-size: 0.9rem;
             color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         /* Vehicle */
+        .vehicle-section {
+            background: linear-gradient(to bottom, var(--bg-body), #eef2f3);
+        }
+
         .vehicle-content {
             display: flex;
             flex-wrap: wrap;
@@ -358,84 +508,111 @@
             align-items: center;
         }
 
-        .vehicle-image {
+        .vehicle-image-wrapper {
             flex: 1 1 500px;
-            min-height: 400px;
-            background-image: url('https://placehold.co/800x600/e63946/FFF?text=Vehicle+Design+Render');
+            position: relative;
+        }
+
+        .vehicle-image {
+            min-height: 450px;
+            background-image: url('https://placehold.co/800x600/ff3b3f/FFF?text=SR-24+Render');
             background-size: cover;
             background-position: center;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-hover);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+
+        .vehicle-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
         }
 
         .vehicle-details {
             flex: 1 1 400px;
         }
 
+        .specs-list {
+            margin-top: 2rem;
+        }
+
+        .specs-list div {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
         .specs-list dt {
             font-weight: 700;
-            color: var(--secondary-color);
-            margin-top: 1rem;
+            color: var(--text-main);
         }
 
         .specs-list dd {
-            margin-left: 0;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
         }
 
         /* Achievements */
         .achievements-grid {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
             flex-wrap: wrap;
         }
 
         .achievement-badge {
-            width: 180px;
-            height: 180px;
-            background: var(--bg-card);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 4px solid var(--primary-color);
-            box-shadow: var(--shadow-md);
             text-align: center;
             padding: 1rem;
+            background: var(--bg-card);
+            border: 4px solid transparent;
+            background-image: linear-gradient(var(--bg-card), var(--bg-card)), var(--primary-gradient);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            box-shadow: var(--shadow-md);
             transition: transform 0.3s;
         }
 
+        [data-theme="dark"] .achievement-badge {
+            background-image: linear-gradient(#1e1e1e, #1e1e1e), var(--primary-gradient);
+        }
+
         .achievement-badge:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .achievement-rank {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: var(--primary-color);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1;
         }
 
         .achievement-event {
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
         }
 
         /* Gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .gallery-item {
             position: relative;
-            height: 250px;
+            height: 300px;
             overflow: hidden;
             border-radius: var(--border-radius);
             cursor: pointer;
@@ -445,79 +622,113 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Contact */
         .footer {
-            background-color: #1a1a1a;
+            background-color: #050505;
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 6rem 0 2rem;
+            position: relative;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+        .footer .wave-divider {
+            transform: rotate(0deg);
+            top: -99px;
+            bottom: auto;
         }
 
-        .footer h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            margin-right: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            color: #ccc;
+        .footer .wave-divider .shape-fill {
+            fill: #050505;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
+            padding-top: 3rem;
+            border-top: 1px solid #222;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         /* =========================================
-           5. Animations & Mobile
+           6. Animations & Mobile
            ========================================= */
-        
-        /* Scroll Animation utility class */
+
         .scroll-hidden {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        
+
         .scroll-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Stagger Delay Classes */
+        .delay-100 {
+            transition-delay: 0.1s;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Mobile Nav */
@@ -528,25 +739,35 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            
-            .menu-toggle { display: block; }
-            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 70px;
                 right: -100%;
-                background: var(--bg-card);
+                background: var(--bg-nav);
+                backdrop-filter: blur(20px);
                 height: calc(100vh - 70px);
-                width: 70%;
+                width: 80%;
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: -5px 0 10px rgba(0,0,0,0.1);
-                transition: right 0.3s ease;
+                justify-content: center;
+                align-items: center;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             }
 
             .nav-links.active {
                 right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
             }
 
             .vehicle-content {
@@ -555,12 +776,13 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-content">
-            <div class="logo">TEAM SWARAJYA</div> <!-- Replace with your Team Name -->
+            <a href="#" class="logo">TEAM SWARAJYA</a>
             <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -577,165 +799,179 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>TEAM SWARAJYA RACING</h1> <!-- Replace Project Title -->
-            <p>Conquering Terrains, Engineering Dreams. <br>The Official M-BAJA Team of [Your College Name], [Year].</p>
+            <h1>ENGINEERING<br>ADRENALINE</h1>
+            <p>From the Garage to the Podium. We are Team Swarajya, designing the future of all-terrain performance.</p>
             <div class="cta-group">
-                <a href="#team" class="btn btn-primary">Meet the Team</a>
-                <a href="#gallery" class="btn btn-secondary">View Gallery</a>
+                <a href="#team" class="btn btn-primary">Join the Ride</a>
+                <a href="#gallery" class="btn btn-secondary">Watch Video</a>
             </div>
+        </div>
+
+        <!-- Wave Divider -->
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Competition Overview -->
-    <section id="about" class="scroll-hidden">
+    <section id="about">
         <div class="container">
-            <h2 class="section-title">Competition Overview</h2>
-            <p class="section-subtitle">Pushing the limits of engineering and endurance at M-BAJA SAE India.</p>
+            <h2 class="section-title scroll-hidden">The Competition</h2>
+            <p class="section-subtitle scroll-hidden">M-BAJA SAE India challenges us to go beyond limits.</p>
+
             <div class="overview-grid">
-                <div class="info-card">
-                    <h3>The Event</h3>
-                    <p>M-BAJA SAE India constitutes a collegiate engineering design competition for undergraduate engineering students.</p>
+                <div class="glass-card info-card scroll-hidden delay-100">
+                    <h3>Endurance</h3>
+                    <p>4 hours of grueling terrain testing every bolt and weld on the vehicle.</p>
                 </div>
-                <div class="info-card">
-                    <h3>The Challenge</h3>
-                    <p>To design, fabricate, and validate a single-seater four-wheeled off-road vehicle.</p>
+                <div class="glass-card info-card scroll-hidden delay-200">
+                    <h3>Maneuverability</h3>
+                    <p>Precision steering through tight muddy turns for the ultimate handling capability.</p>
                 </div>
-                <div class="info-card">
-                    <h3>Highlights</h3>
-                    <p>Endurance racing, steep hill climbs, suspension traction, and maneuverability tests.</p>
+                <div class="glass-card info-card scroll-hidden delay-300">
+                    <h3>Innovation</h3>
+                    <p>Engineering novel solutions for traction, suspension geometry, and driver ergonomics.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="scroll-hidden">
+    <section id="team" style="background: linear-gradient(180deg, var(--bg-body) 0%, rgba(0,0,0,0.05) 100%);">
         <div class="container">
-            <h2 class="section-title">Our Team</h2>
-            <p class="section-subtitle">The minds and hands behind the machine.</p>
+            <h2 class="section-title scroll-hidden">The Crew</h2>
+            <p class="section-subtitle scroll-hidden">Dedicated to speed. Committed to excellence.</p>
 
-            <!-- Loop Subteams here -->
+            <!-- Powertrain -->
             <div class="subteam-group">
-                <h3 class="subteam-title">Powertrain</h3>
+                <h3 class="subteam-title scroll-hidden">Powertrain</h3>
                 <div class="team-grid">
-                    <!-- Member Card -->
-                    <div class="member-card">
-                        <div class="member-photo" style="background-image: url('https://placehold.co/400x500/cccccc/666666?text=Member+1');"></div>
+                    <div class="glass-card member-card scroll-hidden delay-100">
+                        <div class="member-photo"
+                            style="background-image: url('https://placehold.co/400x500/ff3b3f/FFF?text=Captain');">
+                        </div>
                         <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Head of Powertrain</div>
+                            <div class="member-name">Arjun Sharma</div>
+                            <div class="member-role">Team Captain</div>
                         </div>
                     </div>
-                    <div class="member-card">
+                    <div class="glass-card member-card scroll-hidden delay-200">
                         <div class="member-photo"></div>
                         <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Engine Tuner</div>
+                            <div class="member-name">Soham Gupta</div>
+                            <div class="member-role">Engine Lead</div>
+                        </div>
+                    </div>
+                    <div class="glass-card member-card scroll-hidden delay-300">
+                        <div class="member-photo"></div>
+                        <div class="member-info">
+                            <div class="member-name">Rohan Das</div>
+                            <div class="member-role">Transmission</div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Suspension -->
             <div class="subteam-group">
-                <h3 class="subteam-title">Suspension & Steering</h3>
+                <h3 class="subteam-title scroll-hidden">Suspension</h3>
                 <div class="team-grid">
-                    <div class="member-card">
+                    <div class="glass-card member-card scroll-hidden">
                         <div class="member-photo"></div>
                         <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Suspension Lead</div>
+                            <div class="member-name">Priya Patel</div>
+                            <div class="member-role">Suspension Head</div>
                         </div>
                     </div>
-                    <div class="member-card">
+                    <div class="glass-card member-card scroll-hidden delay-100">
                         <div class="member-photo"></div>
                         <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Steering Analyst</div>
+                            <div class="member-name">Amit Kumar</div>
+                            <div class="member-role">Dynamics</div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-             <div class="subteam-group">
-                <h3 class="subteam-title">Design</h3>
-                <div class="team-grid">
-                    <div class="member-card">
-                        <div class="member-photo"></div>
-                        <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Design Head</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subteam-group">
-                <h3 class="subteam-title">Brakes</h3>
-                <div class="team-grid">
-                    <div class="member-card">
-                        <div class="member-photo"></div>
-                        <div class="member-info">
-                            <div class="member-name">Member Name</div>
-                            <div class="member-role">Brakes Lead</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add other subteams: Electrical, Manufacturing, Operations similarly -->
 
         </div>
     </section>
 
     <!-- Vehicle Section -->
-    <section id="vehicle" class="scroll-hidden" style="background-color: var(--bg-card);">
+    <section id="vehicle" class="vehicle-section">
         <div class="container">
-            <h2 class="section-title">The Beast: SR-24</h2> <!-- Replace Vehicle Name -->
+            <h2 class="section-title scroll-hidden">SR-25 Prototype</h2>
             <div class="vehicle-content">
-                <div class="vehicle-image">
-                    <!-- Image is set in CSS but can be overridden inline -->
+                <div class="vehicle-image-wrapper scroll-hidden">
+                    <div class="vehicle-image"></div>
                 </div>
-                <div class="vehicle-details">
-                    <h3>Design Philosophy</h3>
-                    <p>Built for durability and agility, the SR-24 features a custom chromoly chassis and a tuned Briggs & Stratton engine.</p>
-                    
+                <div class="glass-card vehicle-details scroll-hidden delay-200" style="padding: 2.5rem;">
+                    <h3>Technical Excellence</h3>
+                    <p>The SR-25 represents a leap forward in power-to-weight ratio optimization.</p>
+
                     <dl class="specs-list">
-                        <dt>Engine</dt>
-                        <dd>305cc Briggs & Stratton</dd>
-
-                        <dt>Chassis</dt>
-                        <dd>AISI 4130 Chromoly Steel Spaceframe</dd>
-
-                        <dt>Suspension</dt>
-                        <dd>Double Wishbone (Front), Semi-Trailing Arm (Rear)</dd>
-
-                        <dt>Brakes</dt>
-                        <dd>All-wheel hydraulic disc brakes with custom master cylinders</dd>
-
-                        <dt>Top Speed</dt>
-                        <dd>60 kmph (limited)</dd>
+                        <div>
+                            <dt>Power Unit</dt>
+                            <dd>10HP B&S OHV</dd>
+                        </div>
+                        <div>
+                            <dt>Transmission</dt>
+                            <dd>CVT Tuned for Torque</dd>
+                        </div>
+                        <div>
+                            <dt>Weight</dt>
+                            <dd>140kg (Wet)</dd>
+                        </div>
+                        <div>
+                            <dt>Suspension Travel</dt>
+                            <dd>10" Front / 12" Rear</dd>
+                        </div>
+                        <div>
+                            <dt>Top Speed</dt>
+                            <dd>58 km/h</dd>
+                        </div>
                     </dl>
+
+                    <div style="margin-top: 2rem;">
+                        <a href="#" class="btn btn-primary" style="padding: 10px 25px; font-size: 0.8rem;">Download Spec
+                            Sheet</a>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Wave Divider Bottom -->
+        <div class="wave-divider" style="bottom: -1px; transform: rotate(0);">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+                    class="shape-fill"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Achievements -->
     <section id="results" class="scroll-hidden">
         <div class="container">
-            <h2 class="section-title">Achievements</h2>
+            <h2 class="section-title">Hall of Fame</h2>
+            <p class="section-subtitle">Our track record speaks for itself.</p>
             <div class="achievements-grid">
-                <div class="achievement-badge">
-                    <div class="achievement-rank">#5</div>
-                    <div class="achievement-event">Endurance Race<br>2024</div>
+                <div class="glass-card achievement-badge scroll-hidden delay-100">
+                    <div class="achievement-rank">#4</div>
+                    <div class="achievement-event">AIR Overall<br>2024</div>
                 </div>
-                <div class="achievement-badge">
-                    <div class="achievement-rank">#3</div>
-                    <div class="achievement-event">Design Eval<br>2023</div>
+                <div class="glass-card achievement-badge scroll-hidden delay-200">
+                    <div class="achievement-rank">#2</div>
+                    <div class="achievement-event">Endurance<br>2023</div>
                 </div>
-                <div class="achievement-badge">
+                <div class="glass-card achievement-badge scroll-hidden delay-300">
                     <div class="achievement-rank">#1</div>
-                    <div class="achievement-event">Sales Presentation<br>2024</div>
+                    <div class="achievement-event">Cost Report<br>2024</div>
                 </div>
             </div>
         </div>
@@ -746,66 +982,90 @@
         <div class="container">
             <h2 class="section-title">Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+1" alt="Gallery Image 1"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+2" alt="Gallery Image 2"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+3" alt="Gallery Image 3"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+4" alt="Gallery Image 4"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+5" alt="Gallery Image 5"></div>
-                <div class="gallery-item"><img src="https://placehold.co/600x400?text=Action+6" alt="Gallery Image 6"></div>
+                <div class="gallery-item glass-card">
+                    <img src="https://placehold.co/600x400?text=Testing" alt="Track Testing">
+                    <div class="gallery-caption">Track Testing Day 1</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="https://placehold.co/600x400?text=Welding" alt="Fabrication">
+                    <div class="gallery-caption">Chassis Fabrication</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="https://placehold.co/600x400?text=Team" alt="Team Photo">
+                    <div class="gallery-caption">Team Briefing</div>
+                </div>
+                <div class="gallery-item glass-card">
+                    <img src="https://placehold.co/600x400?text=Race" alt="Race Day">
+                    <div class="gallery-caption">Flag Off</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Footer -->
+    <!-- Footer -->
     <footer id="contact" class="footer">
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+
         <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>Contact Us</h3>
-                    <div class="contact-info">
-                        <p>📍 College Address Placeholder</p>
-                        <p>📧 teamswarajya@example.com</p>
-                        <p>📞 +91 12345 67890</p>
-                    </div>
+            <div class="footer-content"
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3rem;">
+                <div style="flex: 1 1 300px;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.5rem;">TEAM SWARAJYA</h3>
+                    <p style="color: #888; max-width: 300px;">
+                        Engineering the future, one lap at a time. Join us on our journey to national dominance in the
+                        SAE Baja circuit.
+                    </p>
                 </div>
-                <div>
-                    <h3>Follow the Action</h3>
+
+                <div style="flex: 1 1 200px;">
+                    <h4 style="color:white; margin-bottom: 1rem;">Connect</h4>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn">In</a>
                         <a href="#" aria-label="Instagram">Ig</a>
                         <a href="#" aria-label="Facebook">Fb</a>
+                        <a href="#" aria-label="YouTube">Yt</a>
                     </div>
                 </div>
-                <div>
-                    <h3>Resources</h3>
-                    <p><a href="#">Sponsorship Brochure</a></p>
-                    <p><a href="#">Team Newsletter</a></p>
+
+                <div style="flex: 1 1 200px;">
+                    <h4 style="color:white; margin-bottom: 1rem;">Contact</h4>
+                    <p style="color: #888;">teamswarajya@college.edu</p>
+                    <p style="color: #888;">+91 98765 43210</p>
                 </div>
             </div>
+
             <div class="copyright">
-                &copy; 2024 Team Swarajya Racing. Designed with ❤️ by Engineering Team.
+                &copy; 2025 Team Swarajya Racing. All rights reserved. <br>
+                <span style="font-size: 0.75rem; color: #444;">Designed with ❤️ for Engineering</span>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Interactions -->
+    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // 1. Dark Mode Toggle
             const toggleBtn = document.querySelector('.theme-toggle');
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            
             const currentTheme = localStorage.getItem('theme');
-            if (currentTheme == 'dark') {
+
+            // Check system preference
+            if (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 toggleBtn.textContent = '☀️';
-            } else if (currentTheme == 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                toggleBtn.textContent = '🌙';
+            } else if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleBtn.textContent = '☀️';
             }
 
-            toggleBtn.addEventListener('click', function() {
+            toggleBtn.addEventListener('click', () => {
                 let theme = 'light';
                 if (document.documentElement.getAttribute('data-theme') !== 'dark') {
                     document.documentElement.setAttribute('data-theme', 'dark');
@@ -818,7 +1078,7 @@
                 localStorage.setItem('theme', theme);
             });
 
-            // 2. Mobile Menu Toggle
+            // 2. Mobile Menu
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
 
@@ -827,7 +1087,6 @@
                 menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
             });
 
-            // Close menu when clicking a link
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -835,24 +1094,28 @@
                 });
             });
 
-            // 3. Scroll Animations (Intersection Observer)
-            const observerOptions = {
-                threshold: 0.1
-            };
-
+            // 3. Scroll Animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('scroll-visible');
-                        observer.unobserve(entry.target); // Only animate once
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.1 });
 
-            document.querySelectorAll('.scroll-hidden').forEach((el) => {
-                observer.observe(el);
+            document.querySelectorAll('.scroll-hidden').forEach((el) => observer.observe(el));
+
+            // 4. Parallax Effect for Hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroText = document.querySelector('.hero .container');
+                if (heroText) {
+                    heroText.style.transform = `translateY(${scrolled * 0.4}px)`;
+                    heroText.style.opacity = 1 - (scrolled / 700);
+                }
             });
         });
     </script>
 </body>
+
 </html>
